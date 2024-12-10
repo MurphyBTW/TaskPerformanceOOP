@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Menu - aling kusing</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <header>
+        <div class="container">
+            <img src="images/logo.png" alt="Logo" class="logo">
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="orders.html">Orders</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+   <!-- Menu Section -->
+   <section id="menu">
+    <div class="container">
+        <h2>Our Menu</h2>
+
+        <div class="menu-list">
+            <!-- Menu Items -->
+            <div class="menu-item">
+                <img src="images/burger.jpg" alt="Big Burger">
+                <h3>Big Burger</h3>
+                <p>Price: ₱80.99</p>
+            </div>
+
+            <div class="menu-item">
+                <img src="images/chicken_wings.jpg" alt="Chicken Wings">
+                <h3>Chicken Wings</h3>
+                <p>Price: ₱70.99</p>
+            </div>
+
+            <div class="menu-item">
+                <img src="images/salad.jpg" alt="Veggie Salad">
+                <h3>Veggie Salad</h3>
+                <p>Price: ₱60.99</p>
+            </div>
+
+            <div class="menu-item">
+                <img src="images/pizza.jpg" alt="Pizza Slice">
+                <h3>Pizza Slice</h3>
+                <p>Price: ₱80.99</p>
+            </div>
+
+            <!-- New Items -->
+            <div class="menu-item">
+                <img src="images/cheese_fries.jpg" alt="Cheese Fries">
+                <h3>Cheese Fries</h3>
+                <p>Price: ₱80.49</p>
+            </div>
+
+            <div class="menu-item">
+                <img src="images/spicy_chicken_sandwich.jpg" alt="Spicy Chicken Sandwich">
+                <h3>Spicy Chicken Sandwich</h3>
+                <p>Price: ₱90.49</p>
+            </div>
+
+            <div class="menu-item">
+                <img src="images/bbq_ribs.jpg" alt="BBQ Ribs">
+                <h3>BBQ Ribs</h3>
+                <p>Price: ₱80.99</p>
+            </div>
+
+            <div class="menu-item">
+                <img src="images/fish_tacos.jpg" alt="Fish Tacos">
+                <h3>Fish Tacos</h3>
+                <p>Price: ₱70.49</p>
+            </div>
+
+            <div class="menu-item">
+                <img src="images/milkshake.jpg" alt="Milkshake">
+                <h3>Milkshake</h3>
+                <p>Price: ₱80.99</p>
+            </div>
+
+            <div class="menu-item">
+                <img src="images/onion_rings.jpg" alt="Onion Rings">
+                <h3>Onion Rings</h3>
+                <p>Price: ₱80.99</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    // Function to add items to the cart directly from the menu
+    function addToCartFromMenu(itemName, itemPrice) {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        localStorage.setItem('cart', JSON.stringify(cart));
+
+        alert(`${itemName} has been added to your cart.`);
+    }
+</script>
+
+</body>
+</html>

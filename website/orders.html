@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order - Fast Food Chain</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header>
+    <div class="container">
+        <img src="images/logo.png" alt="Logo" class="logo">
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="orders.html">Orders</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- Orders Section -->
+<section id="orders">
+    <div class="container">
+        <h2>Order Your Favorite Meal</h2>
+        <form id="order-form">
+            <label for="item">Choose your item:</label>
+            <select id="item" name="item">
+                <option value="Big Burger">Big Burger - ₱80.99</option>
+                <option value="Chicken Wings">Chicken Wings - ₱70.99</option>
+                <option value="Veggie Salad">Veggie Salad - ₱60.99</option>
+                <option value="Pizza Slice">Pizza Slice - ₱80.99</option>
+                <option value="Cheese Fries">Cheese Fries - ₱80.49</option>
+                <option value="Spicy Chicken Sandwich">Spicy Chicken Sandwich - ₱90.49</option>
+                <option value="BBQ Ribs">BBQ Ribs - ₱80.99</option>
+                <option value="Fish Tacos">Fish Tacos - ₱70.49</option>
+                <option value="Milkshake">Milkshake - ₱80.99</option>
+                <option value="Onion Rings">Onion Rings - ₱80.99</option>
+            </select>
+            <input type="button" value="Add to Cart" onclick="addToCart()">
+        </form>
+
+            <h3>Your Cart</h3>
+            <ul id="cart-items">
+                <!-- Cart items will be added dynamically here -->
+            </ul>
+
+            <h3>Total: ₱<span id="total">0.00</span></h3>
+
+            <button id="checkout-btn" onclick="cashout()">Checkout</button>
+        </div>
+    </section>
+
+    <script>
+        // Array to store cart items
+        let cart = [];
+        let total = 0;
+
+        // Function to add items to the cart
+        function addToCart() {
+            const itemSelect = document.getElementById("item");
+            const selectedItem = itemSelect.options[itemSelect.selectedIndex].text;
+            const itemPrice = parseFloat(selectedItem.split(' - ₱')[1]);
+
+            // Add the selected item to the cart
+            cart.push({ name: selectedItem.split(' - ₱')[0], price: itemPrice });
+
+            // Update the cart display and total
+            updateCart();
+        }
+
+        // Function to update the cart display
+        function updateCart() {
+            const cartItemsList = document.getElementById("cart-items");
+            cartItemsList.innerHTML = ""; // Clear the current cart display
+
+            // Add each item in the cart to the list
+            cart.forEach(item => {
+                const listItem = document.createElement("li");
+                listItem.textContent = `${item.name} - ₱${item.price.toFixed(2)}`;
+                cartItemsList.appendChild(listItem);
+            });
+
+            // Calculate and update the total
+            total = cart.reduce((sum, item) => sum + item.price, 0);
+            document.getElementById("total").textContent = total.toFixed(2);
+        }
+
+        // Function to simulate cashout (checkout)
+        function cashout() {
+            if (cart.length === 0) {
+                alert("Your cart is empty! Please add items to the cart.");
+                return;
+            }
+
+            alert(`Thank you for your order! Your total is ₱${total.toFixed(2)}. Have a great day!`);
+
+            // Clear the cart after checkout
+            cart = [];
+            updateCart();
+        }
+    </script>
+
+</body>
+</html>
